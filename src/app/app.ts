@@ -1,10 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { LeftMain } from './left-main/left-main';
+import { Suggestions } from './suggestions/suggestions';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, LeftMain],
+  imports: [RouterOutlet, LeftMain, Suggestions],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
