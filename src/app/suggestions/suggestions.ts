@@ -1,13 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { SuggestionService } from './suggestion.service';
 
 @Component({
   selector: 'app-suggestions',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './suggestions.html',
-  styleUrl: './suggestions.scss',
+  styleUrls: ['./suggestions.scss'],
 })
-export class Suggestions {
-  bulbTwoImage: string = 'assets/bulb-2.png';
-  arrowDown: string = 'assets/arrow.svg';
-  magnifying: string = 'assets/person-magnifying.png';
+export class Suggestions implements OnInit {
+  bulbTwoImage = 'assets/bulb-2.png';
+  arrowDown = 'assets/arrow.svg';
+  magnifying = 'assets/person-magnifying.png';
+  addingFeedback = false;
+
+  constructor(private suggestionService: SuggestionService) {}
+
+  ngOnInit(): void {
+    this.displayData();
+  }
+
+  displayData() {
+    this.suggestionService.getComments().subscribe((data) => {
+      console.log('this is the array of requests', data);
+    });
+  }
+
+  addFeedback() {
+    this.addingFeedback = true;
+  }
 }
