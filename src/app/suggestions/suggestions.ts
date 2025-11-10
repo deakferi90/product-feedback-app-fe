@@ -27,7 +27,6 @@ export class Suggestions implements OnInit {
   displayData() {
     this.suggestionService.getComments().subscribe((data) => {
       this.comments = data;
-      console.log(this.comments);
     });
   }
 
