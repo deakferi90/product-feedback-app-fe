@@ -12,8 +12,11 @@ import { SuggestionService } from './suggestion.service';
 export class Suggestions implements OnInit {
   bulbTwoImage = 'assets/bulb-2.png';
   arrowDown = 'assets/arrow.svg';
+  upArrow = 'assets/arrowup.svg';
   magnifying = 'assets/person-magnifying.png';
-  addingFeedback = false;
+  commentsBubble = 'assets/commentsBubble.svg';
+  addingFeedback = true;
+  comments: any = [];
 
   constructor(private suggestionService: SuggestionService) {}
 
@@ -23,11 +26,12 @@ export class Suggestions implements OnInit {
 
   displayData() {
     this.suggestionService.getComments().subscribe((data) => {
-      console.log('this is the array of requests', data);
+      this.comments = data;
+      console.log(this.comments);
     });
   }
 
   addFeedback() {
-    this.addingFeedback = true;
+    this.addingFeedback = false;
   }
 }

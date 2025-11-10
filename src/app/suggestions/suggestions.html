@@ -5,7 +5,9 @@
     <div class="flex justify-between gap-[30px]">
       <div class="suggestion-image-container flex gap-[12px]">
         <img src="{{ bulbTwoImage }}" alt="bulbTwo" />
-        <span class="font-bold text-[#fff]">6 Suggestions</span>
+        <span class="font-bold text-[#fff]"
+          >{{ comments.length }} Suggestions</span
+        >
       </div>
 
       <div class="text-[#fff] flex items-normal gap-[5px]">
@@ -22,9 +24,37 @@
       + Add Feedback
     </button>
   </div>
-  @if (addingFeedback) {
-  <h1 class="text-red-600">These are the feedbacks</h1>
-  } @else {
+  @if (addingFeedback) { @for (comment of comments; track $index) {
+  <div class="comment-container w-full text-[#3A4374] flex gap-[30px]">
+    <div class="flex w-full justify-between">
+      <div class="flex gap-[30px]">
+        <div class="upvote-box rounded-[10px]">
+          <img src="{{ upArrow }}" alt="up-arrow" />
+          {{ comment.upvotes }}
+        </div>
+        <div class="title">
+          <h1 class="text-lg font-jost font-bold">
+            {{ comment.title }}
+          </h1>
+          <h2>{{ comment.description }}</h2>
+          <div class="mb-[5px]">
+            <button
+              class="font-jost font-semibold text-[#4661E6] bg-[#F2F4FF] mx-[0px] my-[10px] py-[5px] px-[15px] rounded-[10px] text-[13px] capitalize"
+            >
+              {{ comment.category }}
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center gap-[10px]">
+        <img src="{{ commentsBubble }}" alt="comments-bubble" />
+        <span class="font-bold text-base">{{
+          comment.comments?.length ?? 0
+        }}</span>
+      </div>
+    </div>
+  </div>
+  } } @else {
   <div
     class="bg-[#fff] h-[600px] w-auto rounded-[10px] mt-[20px] flex justify-center items-center"
   >
