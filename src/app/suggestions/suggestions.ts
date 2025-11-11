@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SuggestionService } from './suggestion.service';
+import { ProductRequest } from './suggestions.interface';
 
 @Component({
   selector: 'app-suggestions',
@@ -16,7 +17,7 @@ export class Suggestions implements OnInit {
   magnifying = 'assets/person-magnifying.png';
   commentsBubble = 'assets/commentsBubble.svg';
   addingFeedback = true;
-  comments: any = [];
+  dataRequest: ProductRequest[] = [];
 
   constructor(private suggestionService: SuggestionService) {}
 
@@ -25,8 +26,8 @@ export class Suggestions implements OnInit {
   }
 
   displayData() {
-    this.suggestionService.getComments().subscribe((data) => {
-      this.comments = data;
+    this.suggestionService.getComments().subscribe((data: ProductRequest[]) => {
+      this.dataRequest = data;
     });
   }
 
