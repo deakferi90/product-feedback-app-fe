@@ -1,3 +1,4 @@
+@if (hideSuggestions) {
 <div class="suggestion-container font-jost text-[#fff]">
   <div
     class="suggestion-header pl-[25px] font-jost h-[72px] w-auto bg-[#373F68] rounded-[10px] flex items-center gap-[40px] justify-between"
@@ -46,11 +47,13 @@
           </div>
         </div>
       </div>
-      <div class="flex items-center gap-[10px]">
-        <img src="{{ commentsBubble }}" alt="comments-bubble" />
-        <span class="font-bold text-base">{{
-          request.comments?.length ?? 0
-        }}</span>
+      <div class="flex items-center">
+        <div class="flex gap-[10px] cursor-pointer" (click)="showComments()">
+          <img src="{{ commentsBubble }}" alt="comments-bubble" />
+          <span class="font-bold text-base">{{
+            request.comments?.length ?? 0
+          }}</span>
+        </div>
       </div>
     </div>
   </div>
@@ -81,3 +84,4 @@
   </div>
   }
 </div>
+}

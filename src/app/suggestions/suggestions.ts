@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SuggestionService } from './suggestion.service';
 import { ProductRequest } from './suggestions.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-suggestions',
@@ -18,8 +19,14 @@ export class Suggestions implements OnInit {
   commentsBubble = 'assets/commentsBubble.svg';
   addingFeedback = true;
   dataRequest: ProductRequest[] = [];
+  hideSuggestions: boolean = true;
 
-  constructor(private suggestionService: SuggestionService) {}
+  @Output() commentsClicked = new EventEmitter<void>();
+
+  constructor(
+    private suggestionService: SuggestionService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.displayData();
@@ -33,5 +40,10 @@ export class Suggestions implements OnInit {
 
   addFeedback() {
     this.addingFeedback = false;
+  }
+
+  showComments() {
+    this.commentsClicked.emit();
+    this.router.navigate(['/edit-feedback']);
   }
 }
