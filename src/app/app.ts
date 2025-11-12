@@ -12,7 +12,6 @@ import { Router, NavigationEnd } from '@angular/router';
   styleUrl: './app.scss',
 })
 export class App {
-  showSuggestionsOnly: boolean = false;
   isEditFeedbackPage: boolean = false;
   protected readonly title = signal('product-feedback');
   ovalImage: string = 'assets/Oval.png';
@@ -23,9 +22,5 @@ export class App {
         this.isEditFeedbackPage = event.urlAfterRedirects === '/edit-feedback';
       }
     });
-  }
-
-  showComments() {
-    this.showSuggestionsOnly = true;
   }
 }
