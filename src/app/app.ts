@@ -4,10 +4,11 @@ import { LeftMain } from './left-main/left-main';
 import { Suggestions } from './suggestions/suggestions';
 import { CommonModule } from '@angular/common';
 import { Router, NavigationEnd } from '@angular/router';
+import { Editfeedback } from './editfeedback/editfeedback';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, RouterOutlet, LeftMain, Suggestions],
+  imports: [CommonModule, RouterOutlet, LeftMain],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
@@ -22,5 +23,9 @@ export class App {
         this.isEditFeedbackPage = event.urlAfterRedirects === '/edit-feedback';
       }
     });
+  }
+
+  onOpenEditFeedback(id: number) {
+    this.isEditFeedbackPage = true;
   }
 }

@@ -47,7 +47,10 @@
         </div>
       </div>
       <div class="flex items-center">
-        <div class="flex gap-[10px] cursor-pointer" (click)="showComments()">
+        <div
+          class="flex gap-[10px] cursor-pointer"
+          (click)="showComments(request)"
+        >
           <img src="{{ commentsBubble }}" alt="comments-bubble" />
           <span class="font-bold text-base">{{
             request.comments?.length ?? 0

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SuggestionService } from './suggestion.service';
 import { ProductRequest } from './suggestions.interface';
 import { Router } from '@angular/router';
+import { SharedService } from '../shared';
 
 @Component({
   selector: 'app-suggestions',
@@ -21,11 +22,12 @@ export class Suggestions implements OnInit {
   dataRequest: ProductRequest[] = [];
   hideSuggestions: boolean = true;
 
-  @Output() commentsClicked = new EventEmitter<void>();
+  @Output() openEditFeedback = new EventEmitter<number>();
 
   constructor(
     private suggestionService: SuggestionService,
-    private router: Router
+    private router: Router,
+    private sharedService: SharedService
   ) {}
 
   ngOnInit(): void {
@@ -42,8 +44,10 @@ export class Suggestions implements OnInit {
     this.addingFeedback = false;
   }
 
-  showComments() {
-    this.commentsClicked.emit();
-    this.router.navigate(['/edit-feedback']);
+  showComments(dataRequest: { id: number }) {
+    this.router.navigate(['/edit-feedback', dataRequest.id]);
+    console.log(dataRequest);
+    this.sharedService.setSelectedRequest(dataRequest);
+    this.openEditFeedback.emit(dataRequest.id);
   }
 }
