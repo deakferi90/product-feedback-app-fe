@@ -1,4 +1,4 @@
-<div class="flex justify-center gap-[20px] my-[60px] mx-auto w-[75%]">
+<div class="flex justify-center gap-[20px] my-[60px] mx-auto w-[70%]">
   <div class="flex justify-between w-full">
     <div class="flex items-center gap-[15px] cursor-pointer" (click)="goBack()">
       <button class="rotate-[-90deg]">
@@ -7,29 +7,31 @@
       <span>Go Back</span>
     </div>
     <button
-      class="bg-[#4661E6] text-[#fff] p-[22px] rounded-[12px] h-[44px] flex items-center"
+      class="bg-[#4661E6] text-[#fff] p-[22px] rounded-[12px] h-[44px] flex items-center cursor-pointer"
     >
       Edit Feedback
     </button>
   </div>
 </div>
 <div
-  class="comment-container text-[#3A4374] flex gap-[30px] mx-auto items-center w-[75%]"
+  class="comment-container text-[#3A4374] flex gap-[30px] mx-auto items-center w-[70%]"
 >
-  <div class="flex w-full justify-between bg-white px-[40px] rounded-[12px]">
-    <div class="flex items-center [30px]">
+  <div
+    class="flex w-full justify-between gap-[30px] bg-white px-[40px] py-[30px] rounded-[12px]"
+  >
+    <div class="flex items-center gap-[30px]">
       <div class="upvote-box rounded-[10px]">
         <img src="{{ upArrow }}" alt="up-arrow" />
-        1
+        {{ feedback?.upvotes }}
       </div>
       <div class="title">
-        <h1 class="text-lg font-jost font-bold">dfdfgfgfd</h1>
-        <h2>gfdgdfffgd</h2>
+        <h1 class="text-lg font-jost font-bold">{{ feedback?.title }}</h1>
+        <h2>{{ feedback?.description }}</h2>
         <div class="mb-[5px]">
           <button
             class="font-jost font-semibold text-[#4661E6] bg-[#F2F4FF] mx-[0px] my-[10px] py-[5px] px-[15px] rounded-[10px] text-[13px] capitalize"
           >
-            fggfhghfgh fhggfh
+            {{ feedback?.category }}
           </button>
         </div>
       </div>
@@ -37,7 +39,9 @@
     <div class="flex items-center">
       <div class="flex gap-[10px] cursor-pointer">
         <img src="{{ commentsBubble }}" alt="comments-bubble" />
-        <span class="font-bold text-base">{{ 0 }}</span>
+        <span class="font-bold text-base">{{
+          feedback?.comments?.length ?? 0
+        }}</span>
       </div>
     </div>
   </div>

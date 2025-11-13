@@ -33,7 +33,6 @@ export class Editfeedback implements OnInit {
     this.suggestionService.getComments().subscribe((data: ProductRequest[]) => {
       this.feedback = data.find((item) => item.id === id);
       this.requestData = data;
-      console.log('Loaded feedback:', this.feedback);
     });
   }
 
