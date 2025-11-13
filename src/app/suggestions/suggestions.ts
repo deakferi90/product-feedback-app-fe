@@ -37,6 +37,7 @@ export class Suggestions implements OnInit {
   displayData() {
     this.suggestionService.getComments().subscribe((data: ProductRequest[]) => {
       this.dataRequest = data;
+      console.log(this.dataRequest.length);
     });
   }
 

@@ -24,7 +24,7 @@
       + Add Feedback
     </button>
   </div>
-  @if (addingFeedback) { @for (request of dataRequest; track $index) {
+  @if (dataRequest.length > 0) { @for (request of dataRequest; track $index) {
   <div class="comment-container w-full text-[#3A4374] flex gap-[30px]">
     <div class="flex w-full justify-between">
       <div class="flex gap-[30px]">
