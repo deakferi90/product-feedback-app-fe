@@ -64,16 +64,18 @@
   </div>
   @for (comment of feedback?.comments; track $index) {
   <div class="flex justify-between items-center pt-15 pb-15">
-    <div class="flex gap-[50px] items-start w-full">
-      <img
-        class="rounded-full w-[50px]"
-        [src]="comment.user.image"
-        alt="User image"
-      />
-      <div class="names">
-        <h1 class="font-jost font-bold">{{ comment.user.name }}</h1>
-        <h1>@{{ comment.user.username }}</h1>
-        <div class="mt-5">{{ comment.content }}</div>
+    <div class="flex gap-[50px] justify-between items-start w-full">
+      <div class="flex items-start gap-[50px]">
+        <img
+          class="rounded-full w-[50px]"
+          [src]="comment.user.image"
+          alt="User image"
+        />
+        <div class="names">
+          <h1 class="font-jost font-bold">{{ comment.user.name }}</h1>
+          <h1>@{{ comment.user.username }}</h1>
+          <div class="mt-5">{{ comment.content }}</div>
+        </div>
       </div>
       <span class="font-jost font-bold text-[#4661E6] cursor-pointer"
         >Reply</span
@@ -82,7 +84,7 @@
   </div>
   @for (reply of comment.replies; track $index) {
   <div class="flex justify-between items-center pt-15 pb-15 ml-[10%]">
-    <div class="flex gap-[50px] items-start w-full">
+    <div class="flex gap-[50px] justify-between items-start w-full">
       <img
         class="rounded-full w-[50px]"
         [src]="reply.user.image"
