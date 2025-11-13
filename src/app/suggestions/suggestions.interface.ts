@@ -5,6 +5,7 @@ export interface User {
 }
 
 export interface Reply {
+  [x: string]: any;
   content: string;
   replyingTo: string;
   user: User;

@@ -1,7 +1,7 @@
 import { CommonModule, Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { SuggestionService } from '../suggestions/suggestion.service';
-import { ProductRequest } from '../suggestions/suggestions.interface';
+import { ProductRequest, Reply } from '../suggestions/suggestions.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -15,6 +15,7 @@ export class Editfeedback implements OnInit {
   feedback?: ProductRequest;
   upArrow = 'assets/arrowup.svg';
   commentsBubble = 'assets/commentsBubble.svg';
+  replies: Reply[] | undefined = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -31,7 +32,12 @@ export class Editfeedback implements OnInit {
   loadFeedback(id: number) {
     this.suggestionService.getComments().subscribe((data: ProductRequest[]) => {
       this.feedback = data.find((item) => item.id === id);
-      console.log(this.feedback?.comments?.length);
+      console.log(
+        this.feedback?.comments?.forEach((comment) => {
+          console.log(comment?.replies);
+          this.replies = comment?.replies;
+        })
+      );
     });
   }
 

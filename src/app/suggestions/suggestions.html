@@ -25,7 +25,10 @@
     </button>
   </div>
   @if (dataRequest.length > 0) { @for (request of dataRequest; track $index) {
-  <div class="comment-container w-full text-[#3A4374] flex gap-[30px]">
+  <div
+    class="comment-container w-full text-[#3A4374] flex gap-[30px] cursor-pointer"
+    (click)="showComments(request)"
+  >
     <div class="flex w-full justify-between">
       <div class="flex gap-[30px]">
         <div class="upvote-box rounded-[10px]">
@@ -47,10 +50,7 @@
         </div>
       </div>
       <div class="flex items-center">
-        <div
-          class="flex gap-[10px] cursor-pointer"
-          (click)="showComments(request)"
-        >
+        <div class="flex gap-[10px]">
           <img src="{{ commentsBubble }}" alt="comments-bubble" />
           <span class="font-bold text-base">{{
             request.comments?.length ?? 0

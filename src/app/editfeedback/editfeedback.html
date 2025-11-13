@@ -48,19 +48,59 @@
 </div>
 @if (feedback?.comments?.length ?? 0 > 0) {
 <div
-  class="comment-container text-[#3A4374] flex gap-[30px] mt-[30px] mx-auto items-center w-[70%]"
+  class="comment-container bg-white px-[40px] py-[30px] rounded-[12px] text-[#3A4374] mt-[30px] mx-auto w-[70%]"
 >
-  <div
-    class="flex w-full gap-[10px] bg-white px-[40px] py-[30px] rounded-[12px]"
-  >
-    <span class="text-lg font-jost font-bold">{{
-      feedback?.comments?.length
-    }}</span>
-    @if (feedback?.comments?.length === 1) {
-    <span class="text-lg font-jost font-bold">Comment</span>
-    } @else {
-    <span class="text-lg font-jost font-bold">Comments</span>
-    }
+  <div>
+    <div class="flex w-full gap-[10px]">
+      <span class="text-lg font-jost font-bold">{{
+        feedback?.comments?.length
+      }}</span>
+      @if (feedback?.comments?.length === 1) {
+      <span class="text-lg font-jost font-bold">Comment</span>
+      } @else {
+      <span class="text-lg font-jost font-bold">Comments</span>
+      }
+    </div>
   </div>
+  @for (comment of feedback?.comments; track $index) {
+  <div class="flex justify-between items-center pt-15 pb-15">
+    <div class="flex gap-[50px] items-start w-full">
+      <img
+        class="rounded-full w-[50px]"
+        [src]="comment.user.image"
+        alt="User image"
+      />
+      <div class="names">
+        <h1 class="font-jost font-bold">{{ comment.user.name }}</h1>
+        <h1>@{{ comment.user.username }}</h1>
+        <div class="mt-5">{{ comment.content }}</div>
+      </div>
+      <span class="font-jost font-bold text-[#4661E6]">Reply</span>
+    </div>
+  </div>
+  @for (reply of comment.replies; track $index) {
+  <div class="flex justify-between items-center pt-15 pb-15 ml-[10%]">
+    <div class="flex gap-[50px] items-start w-full">
+      <img
+        class="rounded-full w-[50px]"
+        [src]="reply.user.image"
+        alt="User image"
+      />
+      <div class="names">
+        <h1 class="font-jost font-bold">{{ reply.user.name }}</h1>
+        <h1>@{{ reply.user.username }}</h1>
+        <div class="mt-5">
+          <span class="font-jost font-bold text-[#AD1FEA] mr-3"
+            >@{{ reply.replyingTo }}</span
+          >{{ reply.content }}
+        </div>
+      </div>
+      <span class="font-jost font-bold text-[#4661E6]">Reply</span>
+    </div>
+  </div>
+  }
+  <hr class="hr-color" />
+  }
 </div>
+
 }
