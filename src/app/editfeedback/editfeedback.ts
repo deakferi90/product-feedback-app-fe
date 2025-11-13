@@ -12,7 +12,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class Editfeedback implements OnInit {
   id!: number;
-  requestData: object[] | any;
   feedback?: ProductRequest;
   upArrow = 'assets/arrowup.svg';
   commentsBubble = 'assets/commentsBubble.svg';
@@ -32,7 +31,7 @@ export class Editfeedback implements OnInit {
   loadFeedback(id: number) {
     this.suggestionService.getComments().subscribe((data: ProductRequest[]) => {
       this.feedback = data.find((item) => item.id === id);
-      this.requestData = data;
+      console.log(this.feedback?.comments?.length);
     });
   }
 
