@@ -20,7 +20,8 @@ export class App {
   constructor(private router: Router) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.isEditFeedbackPage = event.urlAfterRedirects === '/edit-feedback';
+        this.isEditFeedbackPage =
+          event.urlAfterRedirects.startsWith('/edit-feedback');
       }
     });
   }
