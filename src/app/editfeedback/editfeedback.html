@@ -75,7 +75,9 @@
         <h1>@{{ comment.user.username }}</h1>
         <div class="mt-5">{{ comment.content }}</div>
       </div>
-      <span class="font-jost font-bold text-[#4661E6]">Reply</span>
+      <span class="font-jost font-bold text-[#4661E6] cursor-pointer"
+        >Reply</span
+      >
     </div>
   </div>
   @for (reply of comment.replies; track $index) {
