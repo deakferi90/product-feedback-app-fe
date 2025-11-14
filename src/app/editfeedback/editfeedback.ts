@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { SuggestionService } from '../suggestions/suggestion.service';
 import { ProductRequest, Reply } from '../suggestions/suggestions.interface';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-editfeedback',
@@ -16,6 +17,8 @@ export class Editfeedback implements OnInit {
   upArrow = 'assets/arrowup.svg';
   commentsBubble = 'assets/commentsBubble.svg';
   replies: Reply[] | undefined = [];
+  maxChars: number = 250;
+  charactersLeft = this.maxChars;
 
   constructor(
     private route: ActivatedRoute,

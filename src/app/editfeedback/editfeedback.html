@@ -1,4 +1,4 @@
-<div class="flex justify-center gap-[20px] my-[60px] mx-auto w-[70%]">
+<div class="flex justify-center gap-[20px] my-[30px] mx-auto w-[70%]">
   <div class="flex justify-between w-full">
     <div class="flex items-center gap-[15px] cursor-pointer" (click)="goBack()">
       <button class="rotate-[-90deg]">
@@ -103,8 +103,32 @@
     </div>
   </div>
   }
-  <hr class="hr-color" />
+  <hr class="hr-color last:hidden" />
   }
 </div>
-
 }
+<div
+  class="comment-container text-[#3A4374] flex gap-[30px] mx-auto items-center w-[70%] mt-[30px]"
+>
+  <div class="w-full bg-white p-7 rounded-[12px]">
+    <span class="text-lg font-jost font-bold">Add Comment</span>
+    <div class="mt-6 mb-6">
+      <textarea
+        #myinput
+        maxlength="250"
+        (input)="charactersLeft = maxChars - myinput.value.length"
+        name="comment"
+        class="bg-[#F7F8FD] h-[80px] p-3 placeholder-[#8C92B3] txt-area w-full"
+        placeholder="Type your comment here"
+      ></textarea>
+    </div>
+    <div class="flex justify-between items-center">
+      <p class="text-[#647196]">{{ charactersLeft }} characters left</p>
+      <button
+        class="bg-[#ad1fea] text-[#fff] p-[22px] rounded-[12px] h-[44px] flex items-center cursor-pointer"
+      >
+        Post Comment
+      </button>
+    </div>
+  </div>
+</div>
