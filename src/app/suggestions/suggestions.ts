@@ -46,7 +46,5 @@ export class Suggestions implements OnInit {
 
   showComments(dataReq: { id: number }) {
     this.router.navigate(['/edit-feedback', dataReq.id]);
-    this.sharedService.setSelectedRequest(dataReq);
-    this.openEditFeedback.emit(dataReq.id);
   }
 }

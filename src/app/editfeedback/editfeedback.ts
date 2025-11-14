@@ -34,7 +34,6 @@ export class Editfeedback implements OnInit {
       this.feedback = data.find((item) => item.id === id);
       console.log(
         this.feedback?.comments?.forEach((comment) => {
-          console.log(comment?.replies);
           this.replies = comment?.replies;
         })
       );
