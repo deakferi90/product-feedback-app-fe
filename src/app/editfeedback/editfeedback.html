@@ -124,11 +124,14 @@
     </div>
     <div class="flex justify-between items-center">
       <p class="text-[#647196]">{{ charactersLeft }} characters left</p>
+      @if (productRequest) {
       <button
         class="bg-[#ad1fea] text-[#fff] p-[22px] rounded-[12px] h-[44px] flex items-center cursor-pointer"
+        (click)="postComment(myinput.value, productRequest.id)"
       >
         Post Comment
       </button>
+      }
     </div>
   </div>
 </div>

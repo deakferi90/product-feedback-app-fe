@@ -12,4 +12,15 @@ export class SuggestionService {
   getComments() {
     return this.http.get<ProductRequest[]>(this.httpUrl);
   }
+
+  getProductRequestById(id: number) {
+    return this.http.get<ProductRequest>(`${this.httpUrl}/${id}`);
+  }
+
+  postComment(commentData: { content: string; productId: number }) {
+    return this.http.post<{ message: string; updatedRequest: any }>(
+      this.httpUrl,
+      commentData
+    );
+  }
 }
